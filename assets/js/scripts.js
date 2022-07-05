@@ -22,5 +22,56 @@ window.addEventListener('DOMContentLoaded', event => {
             localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
         });
     }
+});
 
+// Alert
+function showAlert(title, text, icon, btnText){
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: btnText
+      })
+}
+
+// Toast
+function showToast(text, icon, position){
+    Swal.fire({
+        text: text,
+        icon: icon,
+        toast: true,
+        position: position,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen:(toast)=>{
+            toast.addEventListener('mouseenter', Swal.stopTimer);
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+}
+
+// confirmation dialog
+function showConfirm(title, text, confirmBtnText, cancelBtnText, confirmBtnColor, cancelBtnColor){
+    Swal.fire({
+        title: title,
+        text: text,
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: confirmBtnText,
+        cancelButtonText: cancelBtnText,
+        confirmButtonColor: confirmBtnColor,
+        cancelButtonColor: cancelBtnColor
+    })
+    // .then(function(result){
+    //         if(result.isConfirmed){
+    //             showAlert("Item edited", "", "success", "Ok");
+    //         }
+    //     }
+    // )
+}
+
+// select2.js
+$(document).ready(function() {
+    $('.UOMDropDown').select2();
 });

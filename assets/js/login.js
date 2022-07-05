@@ -13,12 +13,13 @@ $('#loginBtn').click(
 function loginValidation(username, password, callback){
      
      if(username.length === 0){
-          // $("#errUname").text("username is required");
+          alert("username is required");
           return false;
      }
 
      if(password.length === 0){
           // $("#errPwd").text("password is required");
+          alert("password is required");
           return false;
      }
 }
